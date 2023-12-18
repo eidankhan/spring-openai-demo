@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aks-deployment
+  labels:
+    app: aks-deployment
+  namespace: namespace-workflow-1702934823681
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aks-deployment
+  template:
+    metadata:
+      labels:
+        app: aks-deployment
+    spec:
+      containers:
+        - name: aks-deployment
+          image: mycontainer05.azurecr.io/spring-openai-image:latest
+          ports:
+            - containerPort: 8080
